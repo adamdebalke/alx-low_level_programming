@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 /**
  * main - entry block
  * @void: no argument
@@ -6,13 +6,11 @@
  **/
 int main(void)
 {
-	char holberton[] = "Holberton";
-
-	int c;
-
-	for (c = 0; c < 9; c++)
+	char c[10] = "Holberton";
+	int i;
+	for (i = 0; i < 10; i++)
 	{
-		_putchar(holberton[c]);
+		_putchar(c[i]);
 	}
 	_putchar('\n');
 	return (0);
