@@ -9,7 +9,7 @@ int main(void)
 {
 	char *holberton;
 
-	for (holberton = "Holberton\n"; *holberton != '\0'; ++holberton)
+	for (holberton = "Holberton"; *holberton != '\0'; ++holberton)
 		_putchar(*holberton);
 	return (0);
 }
