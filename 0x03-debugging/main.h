@@ -3,7 +3,7 @@
 
 #include <stdio.h>
 
-void positive_or_negative(int i);
+void ../0x01-variables_if_else_while/positive_or_negative(int i);
 
 int largest_number(int a, int b, int c);
 
