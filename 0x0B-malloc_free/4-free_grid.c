@@ -1,4 +1,4 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
  * free_grid - free a 2-dimensional array created by alloc_grid
