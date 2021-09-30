@@ -1,41 +1,41 @@
 #include "3-calc.h"
 #include <stdio.h>
-#include <stdlib.h>
-/**
- * main - program that performs simple operations
- * @argc: number of command line arguments
- * @argv: array containing the program command line arguments
- * Return: 0.
- * only 3 if argv[1] argv[2] argv[3]
- */
 
+/**
+ * main - a basic calculator
+ * @argc: the size of the argument vector
+ * @argv: the argument vector
+ *
+ * Description: This program accepts a number, an operator and another number,
+ * in that order. It performs the specified operation and prints the result to
+ * standard output (followed by a newline). If called with the wrong number of
+ * arguments, it prints "Error" and terminates the process with a status of 98.
+ * If the operator given is not one of '+', '-', '*', '/' or '%', it prints
+ * "Error" and terminates the process with a status of 99. If asked to perform
+ * division by 0 (e.g. using the '/' or '%' operators), it prints "Error" and
+ * terminates the process with a status value of 100.
+ *
+ * Return: Always 0
+ */
 int main(int argc, char *argv[])
 {
-	int o;
+	int (*f)(int, int);
 
 	if (argc != 4)
 	{
-		printf("Error\n");
+		puts("Error");
 		exit(98);
 	}
 
-	if (*argv[2] != '+' &&
-	        *argv[2] != '-' &&
-	        *argv[2] != '*' &&
-	        *argv[2] != '/' &&
-	    *argv[2] != '%')
+	f = get_op_func(argv[2]);
+
+	if (!f)
 	{
-		printf("Error\n");
+		puts("Error");
 		exit(99);
 	}
 
-	if ((*argv[2] == '/' || *argv[2] == '%') && atoi(argv[3]) == 0)
-	{
-		printf("Error\n");
-		exit(100);
-	}
+	printf("%d\n", f(atoi(argv[1]), atoi(argv[3])));
 
-	o = (*get_op_func(argv[2]))(atoi(argv[1]), atoi(argv[3]));
-	printf("%d\n", o);
 	return (0);
 }
