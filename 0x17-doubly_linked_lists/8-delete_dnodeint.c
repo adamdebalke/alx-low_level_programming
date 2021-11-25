@@ -2,40 +2,46 @@
 #include <stdlib.h>
 #include "lists.h"
 /**
- *delete_dnodeint_at_index- function that deletes the node at index.
- *@head: a ptr to ptr the listint_t list
- *@index:the node that should be deleted. Index starts at 0
- *Return: 1 if it succeeded, -1 if it failed.
+ *delete_dnodeint_at_index - deletes the node at a specific index
+ *@head: the head ofthe linked list
+ *@index: the index of the node to delete
+ *
+ *Return: 1 if success, -1 if failed
  */
 int delete_dnodeint_at_index(dlistint_t **head, unsigned int index)
 {
-	dlistint_t *current;
-	dlistint_t *temp;
-	unsigned int pos;
+	unsigned int nodes = 0;
+	dlistint_t *temp = *head;
 
-	if (head == NULL)
-		return (-1);
 	if (*head == NULL)
 		return (-1);
-	current = *head;
-	pos = 0;
-	if (index == 0)
+
+	while (temp != NULL)
 	{
-		*head = (*head)->next;
-	}
-	else
-	{
-		while (pos < (index - 1))
+		nodes++;
+		if (nodes - 1 == index)
 		{
-			if (current == NULL)
-				return (-1);
-			current = current->next;
-			pos++;
+			if (index == 0)
+			{
+				temp = temp->next;
+				free(*head);
+				*head = temp;
+				if (temp != NULL)
+					temp->prev = NULL;
+				return (1);
+			}
+			if (temp->next == NULL)
+			{
+				temp->prev->next = NULL;
+				free(temp);
+				return (1);
+			}
+			temp->prev->next = temp->next;
+			temp->next->prev = temp->prev;
+			free(temp);
+			return (1);
 		}
-		temp = current;
-		current = current->next;
-		temp->next = current == NULL ? NULL : current->next;
+		temp = temp->next;
 	}
-	free(current);
-	return (1);
+	return (-1);
 }
