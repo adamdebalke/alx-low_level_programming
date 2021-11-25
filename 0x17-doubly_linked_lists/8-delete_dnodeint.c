@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "lists.h"
 /**
- *delete_dnodeint_at_index - deletes the node at a specific index
+ *delete_dnodeint_at_index - function that deletes the node at a specific index
  *@head: the head ofthe linked list
  *@index: the index of the node to delete
  *
