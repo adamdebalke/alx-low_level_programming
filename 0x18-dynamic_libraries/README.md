@@ -4,7 +4,7 @@
 **Read or watch:**
 
     
-    What is difference between Dynamic and Static library (Static and Dynamic linking)(youtube.com/watch?v=eW5he5uFBNM)
+   [ What is difference between Dynamic and Static library (Static and Dynamic linking)](youtube.com/watch?v=eW5he5uFBNM)
     (create dynamic libraries on Linux)
     (Technical Writing)
     Learning Objectives
